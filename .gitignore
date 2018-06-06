@@ -1,0 +1,5 @@
+nightwatch.props.js
+nightwatch.conf.js
+tests_output
+*debug*
+*.log
