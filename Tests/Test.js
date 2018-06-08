@@ -16,6 +16,8 @@ let searchCars = (comparePage, make, model, zip) => {
     comparePage
         .waitForElementPresent('@makeDropdown', 10000)
         .click(comparePage.getHomeMake(make))
+        .api.pause(800)
+    comparePage
         .click(comparePage.getHomeModel(model))
         .setValue('@zipInput', zip)
         .click('@searchBtn')
