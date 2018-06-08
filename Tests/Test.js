@@ -10,6 +10,16 @@ let loginTest = (pageObject, email, password) => {
         .expect.element('@viewAccount').text.to.equal('View Account')
 
 }
+let searchCars = (comparePage, make, model, zip) => {
+    // comparePage
+    //     .api.pause(200000000)
+    comparePage
+        .waitForElementPresent('@makeDropdown', 10000)
+        .click(comparePage.getHomeMake(make))
+        .click(comparePage.getHomeModel(model))
+        .setValue('@zipInput', zip)
+        .click('@searchBtn')
+}
 let compareCars = (comparePage, make1, model1, make2, model2, make3, model3) => {
     comparePage
         .click('@dropDown')
@@ -72,7 +82,8 @@ module.exports = {
     beforeEach: browser => {
         browser.url('https://www.autotrader.com/')
             .waitForElementPresent('body', 8000, 'Page Loaded')
-            .useXpath()
+        // browser.page.AutoTrader().navigate()
+            browser.useXpath()
     },
 
     after: browser => {
@@ -84,8 +95,11 @@ module.exports = {
         
     // },
 
-    'Comparing 3 Cars': browser => {
-        compareCars(browser.page.AutoTrader(), 'Bentley', 'Continental', 'Honda', 'Civic', 'Nissan', 'GT-R')
+    // 'Comparing 3 Cars': browser => {
+    //     compareCars(browser.page.AutoTrader(), 'Bentley', 'Continental', 'Honda', 'Civic', 'Nissan', 'GT-R')
+    // },
+    'Search Vehicles': browser => {
+        searchCars(browser.page.AutoTrader(), 'AMGEN', 'H3', '95838')
     }
 
 }

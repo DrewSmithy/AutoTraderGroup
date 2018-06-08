@@ -4,7 +4,9 @@ var autoTraderCommands = {
     getMake2: (option) => `select[id="make-2"] option[value="${option}"]`,
     getModel2: (option) => `select[id="model-2"] option[value="${option}"]`,
     getMake3: (option) => `select[id="make-3"] option[value="${option}"]`,
-    getModel3: (option) => `select[id="model-3"] option[value="${option}"]`
+    getModel3: (option) => `select[id="model-3"] option[value="${option}"]`,
+    getHomeMake: (option) => `select[name="makeCodeListPlaceHolder"] option[value="${option}"]`,
+    getHomeModel: (option) => `select[name="modelCodeListPlaceHolder"] option[value="${option}"]`
 }
 
 
@@ -105,6 +107,22 @@ module.exports = {
         price3: {
             selector: ('(//span[@class="price"])[3]'),
             locateStrategy: 'xpath' 
+        },
+        makeDropdown: {
+            selector: ('select[name="makeCodeListPlaceHolder"]'),
+            locateStrategy: 'css selector'
+        },
+        modelDropdown: {
+            selector: ('select[name="modelCodeListPlaceHolder"]'),
+            locateStrategy: 'css selector'
+        },
+        zipInput: {
+            selector: ('input[name="zip"]'),
+            locateStrategy: 'css selector'
+        },
+        searchBtn: {
+            selector: ('button[id="Search"]'),
+            locateStrategy: 'css selector'
         }
     }
 }
