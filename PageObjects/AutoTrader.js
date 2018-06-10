@@ -84,7 +84,7 @@ module.exports = {
         addModel3: {
             selector: ('span[id="add-3"]')
         },
-        modelImage1:{
+        modelImage1: {
             selector: ('img[id="main-car-image-1"]'),
             locateStrategy: 'css selector'
         },
@@ -98,15 +98,15 @@ module.exports = {
         },
         price1: {
             selector: ('(//span[@class="price"])[1]'),
-            locateStrategy: 'xpath' 
+            locateStrategy: 'xpath'
         },
         price2: {
             selector: ('(//span[@class="price"])[2]'),
-            locateStrategy: 'xpath' 
+            locateStrategy: 'xpath'
         },
         price3: {
             selector: ('(//span[@class="price"])[3]'),
-            locateStrategy: 'xpath' 
+            locateStrategy: 'xpath'
         },
         makeDropdown: {
             selector: ('select[name="makeCodeListPlaceHolder"]'),
@@ -116,7 +116,7 @@ module.exports = {
             selector: ('select[name="modelCodeListPlaceHolder"]'),
             locateStrategy: 'css selector'
         },
-        zipInput: {
+        zipInputHome: {
             selector: ('input[name="zip"]'),
             locateStrategy: 'css selector'
         },

@@ -19,17 +19,23 @@ let searchCars = (comparePage, make, model, zip) => {
         .api.pause(800)
     comparePage
         .click(comparePage.getHomeModel(model))
-        .setValue('@zipInput', zip)
+        .clearValue('@zipInputHome')
+        .setValue('@zipInputHome', zip)
         .click('@searchBtn')
 }
 let compareCars = (comparePage, make1, model1, make2, model2, make3, model3) => {
     comparePage
         .click('@dropDown')
         .click('@compareModelsButton')
-        .waitForElementPresent('@zipInput', 8000, 'Navigating To Compare Page')
+        .api.pause(1000)
+    comparePage
+        .waitForElementPresent('@zipInput', 8000,)
         .clearValue('@zipInput')
+        .api.pause(500)
+    comparePage
         .setValue('@zipInput', '95838')
         .verify.valueContains('@zipInput', '95838')
+        .waitForElementPresent('@changeZipButton', 5000)
         .click('@changeZipButton')
         .waitForElementNotVisible('@changeZipButton', 10000)
         .api.pause(800)
@@ -43,6 +49,8 @@ let compareCars = (comparePage, make1, model1, make2, model2, make3, model3) => 
     comparePage
         .click('@addModel1')
         .waitForElementPresent('@modelImage1', 8000, '1st Compare Complete')
+        .api.pause(1000)
+    comparePage
         .waitForElementPresent('@make2', 8000)
         .click(comparePage.getMake2(make2))
         .api.pause(1000)
@@ -65,6 +73,8 @@ let compareCars = (comparePage, make1, model1, make2, model2, make3, model3) => 
     comparePage
         .click('@addModel3')
         .waitForElementPresent('@modelImage3', 8000, '3rd Compare Complete')
+        .api.pause(3000)
+    comparePage
         .waitForElementVisible('@price3', 8000, 'Comparing Done')
         .api.pause(1000)
     comparePage
@@ -85,21 +95,21 @@ module.exports = {
         browser.url('https://www.autotrader.com/')
             .waitForElementPresent('body', 8000, 'Page Loaded')
         // browser.page.AutoTrader().navigate()
-            browser.useXpath()
+        browser.useXpath()
     },
 
     after: browser => {
         browser.end()
     },
 
-    // 'Logging In': browser => {
-    //     loginTest(browser.page.AutoTrader(), 'prislocks@gmail.com', 'prislocksunny')
-        
-    // },
+    'Logging In': browser => {
+        loginTest(browser.page.AutoTrader(), 'prislocks@gmail.com', 'prislocksunny')
 
-    // 'Comparing 3 Cars': browser => {
-    //     compareCars(browser.page.AutoTrader(), 'Bentley', 'Continental', 'Honda', 'Civic', 'Nissan', 'GT-R')
-    // },
+    },
+
+    'Comparing 3 Cars': browser => {
+        compareCars(browser.page.AutoTrader(), 'Subaru', 'BRZ', 'Honda', 'Civic', 'Nissan', 'GT-R')
+    },
     'Search Vehicles': browser => {
         searchCars(browser.page.AutoTrader(), 'AMGEN', 'H3', '95838')
     }
