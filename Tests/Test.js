@@ -29,7 +29,7 @@ let compareCars = (comparePage, make1, model1, make2, model2, make3, model3) => 
         .click('@compareModelsButton')
         .api.pause(1000)
     comparePage
-        .waitForElementPresent('@zipInput', 8000,)
+        .waitForElementPresent('@zipInput', 8000)
         .clearValue('@zipInput')
         .api.pause(500)
     comparePage
@@ -102,16 +102,16 @@ module.exports = {
         browser.end()
     },
 
-    'Logging In': browser => {
-        loginTest(browser.page.AutoTrader(), 'prislocks@gmail.com', 'prislocksunny')
+    // 'Logging In': browser => {
+    //     loginTest(browser.page.AutoTrader(), 'prislocks@gmail.com', 'prislocksunny')
 
-    },
+    // },
 
     'Comparing 3 Cars': browser => {
         compareCars(browser.page.AutoTrader(), 'Subaru', 'BRZ', 'Honda', 'Civic', 'Nissan', 'GT-R')
     },
-    'Search Vehicles': browser => {
-        searchCars(browser.page.AutoTrader(), 'AMGEN', 'H3', '95838')
-    }
+    // 'Search Vehicles': browser => {
+    //     searchCars(browser.page.AutoTrader(), 'AMGEN', 'H3', '95838')
+    // }
 
 }
